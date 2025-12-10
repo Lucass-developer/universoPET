@@ -1,14 +1,11 @@
 package br.com.lucassdev.UniversoPET.model;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -21,13 +18,42 @@ public class Pedido {
     private Long id;
     @ManyToOne
     private Usuario usuario;
-    @ManyToMany
-    private List<Produto> produtos;
-    private Integer quantidade;
-    private BigDecimal precoTotal;
     private LocalDateTime dataPedido;
     private LocalDateTime dataEntrega;
+    private Boolean ativo;
 
     public Pedido() {}
+
+    public Pedido(Usuario usuario) {
+        this.usuario = usuario;
+        this.dataPedido = LocalDateTime.now();
+        this.dataEntrega = LocalDateTime.now().plusDays(7);
+        this.ativo = true;
+    }
+
+    @Override
+    public String toString() {
+        return "Pedido " + id + " - " + usuario.getNome() + " - " + dataPedido + " - " + dataEntrega;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public LocalDateTime getDataPedido() {
+        return dataPedido;
+    }
+
+    public LocalDateTime getDataEntrega() {
+        return dataEntrega;
+    }
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
     
 }

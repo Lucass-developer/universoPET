@@ -1,14 +1,11 @@
 package br.com.lucassdev.UniversoPET.model;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,10 +20,6 @@ public class Produto {
     private CategoriaProdutos categoriaProdutos;
     private Integer quantidadeEstoque;
     private Boolean ativo;
-
-    @ManyToMany(mappedBy = "produtos")
-    @JoinColumn(name = "pedido_id")
-    private List<Pedido> pedidos;
     
     public Produto() {}
 

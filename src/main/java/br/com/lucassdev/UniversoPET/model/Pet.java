@@ -6,6 +6,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -20,6 +21,7 @@ public class Pet {
     private CategoriaPet categoriaPet;
     private int idade;
     @ManyToOne
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
     private Boolean ativo;
 

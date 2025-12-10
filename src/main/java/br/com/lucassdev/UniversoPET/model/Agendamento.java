@@ -8,6 +8,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -19,19 +20,24 @@ public class Agendamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
     @ManyToOne
+    @JoinColumn(name = "pet_id")
     private Pet pet;
     private LocalDateTime dataHora;
     private String observacoes;
     @Enumerated(EnumType.STRING)
     private CategoriaServicos categoriaServicos;
+    @Enumerated(EnumType.STRING)
+    private StatusAgendamento status;
 
     public Agendamento() {}
 
     public Agendamento(Usuario usuario, Pet pet, LocalDateTime dataHora, String observacoes,
             CategoriaServicos categoriaServicos) {
         this.usuario = usuario;
+        this.status = StatusAgendamento.AGENDADO;
         this.pet = pet;
         this.dataHora = dataHora;
         this.observacoes = observacoes;
@@ -67,5 +73,13 @@ public class Agendamento {
     public CategoriaServicos getCategoriaServicos() {
         return categoriaServicos;
     }
-    
+
+    public StatusAgendamento getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusAgendamento status) {
+        this.status = status;
+    }
+
 }

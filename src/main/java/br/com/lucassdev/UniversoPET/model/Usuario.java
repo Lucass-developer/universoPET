@@ -27,7 +27,6 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private List<Agendamento> agendamentos;
     @OneToMany(mappedBy = "usuario")
-    @JoinColumn(name = "usuario_id")
     private List<Pedido> pedidos;
     
     public Usuario() {}

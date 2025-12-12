@@ -46,8 +46,7 @@ public class Agendamento {
 
     @Override
     public String toString() {
-        return "Agendamento " + id + " - " + usuario + " - " + pet + " - " + dataHora
-                + " - " + observacoes + " - " + categoriaServicos;
+        return "Agendamento " + id + "\nUsuário: " + usuario.getNome() + "\nPet: " + pet.getNome() + "\nData e Hora: " + dataHora + "\nObservações: " + observacoes + "\nCategoria de Serviço: " + categoriaServicos + "\nStatus: " + status;
     }
 
     public Long getId() {

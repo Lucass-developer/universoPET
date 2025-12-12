@@ -14,7 +14,7 @@ public class UniversoPetApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		MainTestes main = new MainTestes();
-		
+		main.teste();
 	}
 
 }

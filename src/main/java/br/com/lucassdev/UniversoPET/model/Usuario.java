@@ -41,7 +41,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario " + id + " - " + nome + " - " + email + " - " + telefone;
+        return "Usuario " + id + "\nNome: " + nome + "\nEmail: " + email + "\nTelefone: " + telefone + "\nAtivo: " + ativo;
     }
 
     public Long getId() {

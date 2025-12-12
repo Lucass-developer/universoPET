@@ -1,14 +1,12 @@
 package br.com.lucassdev.UniversoPET.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -28,6 +26,7 @@ public class Usuario {
     private List<Agendamento> agendamentos;
     @OneToMany(mappedBy = "usuario")
     private List<Pedido> pedidos;
+    private Boolean administrador;
     
     public Usuario() {}
 
@@ -37,6 +36,7 @@ public class Usuario {
         this.senha = senha;
         this.telefone = telefone;
         this.ativo = true;
+        this.administrador = false;
     }
 
     @Override
@@ -67,6 +67,15 @@ public class Usuario {
     public Boolean getAtivo() {
         return ativo;
     }
+
+    public Boolean getAdministrador() {
+        return administrador;
+    }
+
+     public void setAdministrador(Boolean administrador) {
+        this.administrador = administrador;
+    }
+
 
     
 }

@@ -8,6 +8,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
@@ -25,6 +26,8 @@ public class Produto {
     @Transient
     private Integer quantidadeEstoque;
     private Boolean ativo;
+    @OneToOne(mappedBy = "produto")
+    private Estoque estoque;
     
     public Produto() {}
 
@@ -35,6 +38,7 @@ public class Produto {
         this.categoriaProdutos = categoriaProdutos;
         this.quantidadeEstoque = quantidadeEstoque;
         this.ativo = true;
+        this.estoque = new Estoque(this);
     }
 
     @Override
@@ -67,6 +71,6 @@ public class Produto {
     }
 
     public Integer getQuantidadeEstoque() {
-        return quantidadeEstoque;
+        return estoque.getQuantidade();
     }
 }

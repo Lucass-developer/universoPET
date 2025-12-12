@@ -41,7 +41,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario " + id + "\nNome: " + nome + "\nEmail: " + email + "\nTelefone: " + telefone + "\nAtivo: " + ativo;
+        return "Usuario " + id + "\nNome: " + nome;
     }
 
     public Long getId() {
@@ -76,6 +76,30 @@ public class Usuario {
         this.administrador = administrador;
     }
 
-
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
+    }
     
+    public void fichaCompletaDoUsuario() {
+
+        if (!ativo) {
+            System.out.println("+ Usuário Inativo");
+            return;
+        }
+
+        System.out.println("+ Ficha do Usuário " + nome + " ID: " + id);
+        System.out.println("+ Email: " + email);
+        System.out.println("+ Telefone: " + telefone);
+        if (administrador) {
+            System.out.println("+ Administrador: Sim");
+        } else {
+            System.out.println("+ Administrador: Não");
+        }
+        System.out.println("+ Pets Ativos: ");
+        for (Pet pet : pets) System.out.println(pet); 
+        System.out.println("+ Agendamentos: ");
+        for (Agendamento agendamento : agendamentos) System.out.println(agendamento);
+        System.out.println("+ Pedidos: ");
+        for (Pedido pedido : pedidos) System.out.println(pedido);
+    }
 }

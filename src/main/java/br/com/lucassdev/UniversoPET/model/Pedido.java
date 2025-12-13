@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,6 +25,8 @@ public class Pedido {
     private LocalDateTime dataEntrega;
     private Boolean ativo;
     private BigDecimal total;
+    @Enumerated(EnumType.STRING)
+    private StatusPedido status;
 
     public Pedido() {}
 
@@ -31,6 +35,7 @@ public class Pedido {
         this.dataPedido = LocalDateTime.now();
         this.dataEntrega = LocalDateTime.now().plusDays(7);
         this.ativo = true;
+        this.status = StatusPedido.RECEBIDO;
     }
 
     @Override
@@ -56,6 +61,16 @@ public class Pedido {
 
     public Boolean getAtivo() {
         return ativo;
+    }
+
+    public StatusPedido getStatus() {
+        if (dataEntrega.isBefore(LocalDateTime.now())) return StatusPedido.ENTREGUE;
+        if (dataPedido.isBefore(dataPedido.plusDays(2))) return StatusPedido.ENVIADO;
+        return status;
+    }
+
+    public void setStatus(StatusPedido status) {
+        this.status = status;
     }
     
 }

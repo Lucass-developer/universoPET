@@ -76,7 +76,7 @@ public class Agendamento {
     public StatusAgendamento getStatus() {
         if(status == StatusAgendamento.CANCELADO) return StatusAgendamento.CANCELADO;
         if(LocalDateTime.now().isAfter(dataHora)) return StatusAgendamento.CONCLUIDO;
-        return StatusAgendamento.AGENDADO;
+        return status;
     }
 
     public void setStatus(StatusAgendamento status) {

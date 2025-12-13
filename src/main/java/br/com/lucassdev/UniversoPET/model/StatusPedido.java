@@ -1,8 +1,8 @@
 package br.com.lucassdev.UniversoPET.model;
 
 public enum StatusPedido {
-    RECEBIDO,
-    ENVIADO,
+    REALIZADO,
+    ENVIADO,    
     ENTREGUE,
     CANCELADO;
 }

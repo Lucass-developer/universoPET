@@ -2,6 +2,8 @@ package br.com.lucassdev.UniversoPET.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -10,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,15 +30,19 @@ public class Pedido {
     private BigDecimal total;
     @Enumerated(EnumType.STRING)
     private StatusPedido status;
+    @OneToMany(mappedBy = "pedido")
+    private List<itemPedido> itens = new ArrayList<>();
 
     public Pedido() {}
 
-    public Pedido(Usuario usuario) {
+    public Pedido(Usuario usuario, List<itemPedido> itens) {
         this.usuario = usuario;
         this.dataPedido = LocalDateTime.now();
         this.dataEntrega = LocalDateTime.now().plusDays(7);
         this.ativo = true;
-        this.status = StatusPedido.RECEBIDO;
+        this.status = StatusPedido.REALIZADO;
+        this.itens = itens;
+        this.total = itens.stream().map(item -> item.getPrecoUnitario().multiply(BigDecimal.valueOf(item.getQuantidade()))).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     @Override

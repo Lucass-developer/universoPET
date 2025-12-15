@@ -2,6 +2,7 @@ package br.com.lucassdev.UniversoPET.model;
 
 import java.util.List;
 
+import br.com.lucassdev.UniversoPET.dto.CadastroUsuarioDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,11 +31,11 @@ public class Usuario {
     
     public Usuario() {}
 
-    public Usuario(String nome, String email, String senha, String telefone) {
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.telefone = telefone;
+    public Usuario(CadastroUsuarioDTO usuarioDTO) {
+        this.nome = usuarioDTO.nome();
+        this.email = usuarioDTO.email();
+        this.senha = usuarioDTO.senha();
+        this.telefone = usuarioDTO.telefone();
         this.ativo = true;
         this.administrador = false;
     }
@@ -82,11 +83,7 @@ public class Usuario {
     
     public void fichaCompletaDoUsuario() {
 
-        if (!ativo) {
-            System.out.println("+ Usuário Inativo");
-            return;
-        }
-
+        if (!ativo) System.out.println("+ Usuário Inativo +");
         System.out.println("+ Ficha do Usuário " + nome + " ID: " + id);
         System.out.println("+ Email: " + email);
         System.out.println("+ Telefone: " + telefone);

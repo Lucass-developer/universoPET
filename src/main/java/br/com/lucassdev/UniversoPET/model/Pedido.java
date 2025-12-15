@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -30,7 +31,7 @@ public class Pedido {
     private BigDecimal total;
     @Enumerated(EnumType.STRING)
     private StatusPedido status;
-    @OneToMany(mappedBy = "pedido")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido")
     private List<itemPedido> itens = new ArrayList<>();
 
     public Pedido() {}

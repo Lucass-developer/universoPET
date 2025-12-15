@@ -30,7 +30,7 @@ public class Pet {
 
     public Pet(CadastroPetDTO petDTO, Usuario usuario) {
         this.nome = petDTO.nome();
-        this.categoriaPet = petDTO.categoriaPet();
+        this.categoriaPet = CategoriaPet.valueOf(petDTO.categoriaPet().toUpperCase());
         this.idade = petDTO.idade();
         this.usuario = usuario;
         this.ativo = true;
@@ -38,7 +38,7 @@ public class Pet {
 
     @Override
     public String toString() {
-        return "Pet " + id + " - " + nome + " - " + categoriaPet + " - " + idade + " - " + usuario.getNome();
+        return "Pet " + id + " - " + nome + " - " + categoriaPet.getCategoriaPet() + " - " + idade + " - " + usuario.getNome();
     }
 
     public Long getId() {
@@ -63,5 +63,9 @@ public class Pet {
 
     public Boolean getAtivo() {
         return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
     }
 }

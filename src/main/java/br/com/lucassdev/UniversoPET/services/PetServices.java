@@ -1,6 +1,15 @@
 package br.com.lucassdev.UniversoPET.services;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import br.com.lucassdev.UniversoPET.dto.CadastroPetDTO;
+import br.com.lucassdev.UniversoPET.model.Pet;
+import br.com.lucassdev.UniversoPET.model.Usuario;
+import br.com.lucassdev.UniversoPET.repository.PetRepository;
+import br.com.lucassdev.UniversoPET.repository.UsuarioRepository;
 
 @Service
 public class PetServices {
@@ -23,13 +32,13 @@ public class PetServices {
         }
     }
 
-    public void excluirPet(Long petId) {
+    public void desativarPet(Long petId) {
         try{
             Pet pet = petRepository.findById(petId).orElseThrow(() -> new IllegalArgumentException("Pet não encontrado"));
             pet.setAtivo(false);
             petRepository.save(pet);
         } catch (Exception e) {
-            throw new RuntimeException("Erro ao excluir pet", e);
+            throw new RuntimeException("Erro ao desativar pet", e);
         }
     }
 

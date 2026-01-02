@@ -2,7 +2,6 @@ package br.com.lucassdev.UniversoPET.model;
 
 import java.util.List;
 
-import br.com.lucassdev.UniversoPET.dto.CadastroUsuarioDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,14 +30,7 @@ public class Usuario {
     
     public Usuario() {}
 
-    public Usuario(CadastroUsuarioDTO usuarioDTO) {
-        this.nome = usuarioDTO.nome();
-        this.email = usuarioDTO.email();
-        this.senha = usuarioDTO.senha();
-        this.telefone = usuarioDTO.telefone();
-        this.ativo = true;
-        this.administrador = false;
-    }
+
 
     @Override
     public String toString() {

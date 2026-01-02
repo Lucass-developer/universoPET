@@ -1,6 +1,5 @@
 package br.com.lucassdev.UniversoPET.model;
 
-import br.com.lucassdev.UniversoPET.dto.CadastroPetDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -27,14 +26,6 @@ public class Pet {
     private Boolean ativo;
 
     public Pet() {}
-
-    public Pet(CadastroPetDTO petDTO, Usuario usuario) {
-        this.nome = petDTO.nome();
-        this.categoriaPet = CategoriaPet.valueOf(petDTO.categoriaPet().toUpperCase());
-        this.idade = petDTO.idade();
-        this.usuario = usuario;
-        this.ativo = true;
-    }
 
     @Override
     public String toString() {

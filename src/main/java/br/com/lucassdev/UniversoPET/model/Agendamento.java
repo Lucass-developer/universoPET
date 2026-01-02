@@ -2,7 +2,6 @@ package br.com.lucassdev.UniversoPET.model;
 
 import java.time.LocalDateTime;
 
-import br.com.lucassdev.UniversoPET.dto.CasdastrarAgendamentoDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -35,14 +34,6 @@ public class Agendamento {
 
     public Agendamento() {}
 
-    public Agendamento(CasdastrarAgendamentoDTO agendamentoDTO, Usuario usuario, Pet pet) {
-        this.usuario = usuario;
-        this.status = StatusAgendamento.AGENDADO;
-        this.pet = pet;
-        this.dataHora = agendamentoDTO.dataHora();
-        this.observacoes = agendamentoDTO.observacoes();
-        this.categoriaServicos = agendamentoDTO.categoriaServicos();
-    }
 
     @Override
     public String toString() {

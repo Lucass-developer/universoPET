@@ -34,6 +34,15 @@ public class Agendamento {
 
     public Agendamento() {}
 
+    public Agendamento(Usuario user, Pet pet, LocalDateTime dataHora, String obs, CategoriaServicos tipoServico) {
+        this.usuario = user;
+        this.pet = pet;
+        this.dataHora = dataHora;
+        this.observacoes = obs;
+        this.categoriaServicos = tipoServico;
+        this.status = StatusAgendamento.AGENDADO;
+    }
+
 
     @Override
     public String toString() {

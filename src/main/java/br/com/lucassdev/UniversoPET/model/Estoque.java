@@ -23,12 +23,12 @@ public class Estoque {
 
     public Estoque(Produto produto) {
         this.produto = produto;
-        this.quantidade = produto.getQuantidadeEstoque();
+        this.quantidade = produto.getEstoqueInicial();
     }
 
     @Override
     public String toString() {
-        return "Estoque do Produto " + produto.getNome() + " - ID: " + id + " - Quantidade: " + quantidade;
+        return "Produto: " + produto.getNome() + " (" + produto.getId() + ") Quantidade: " + quantidade + "ID do estoque: " + id;
     }
 
     public Long getId() {
@@ -41,13 +41,5 @@ public class Estoque {
 
     public Integer getQuantidade() {
         return quantidade;
-    }
-
-    public void adicionarQuantidade(Integer quantidade) {
-        this.quantidade += quantidade;
-    }
-
-    public void removerQuantidade(Integer quantidade) {
-        this.quantidade -= quantidade;
     }
 }

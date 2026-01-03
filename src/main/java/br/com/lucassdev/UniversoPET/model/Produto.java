@@ -24,7 +24,7 @@ public class Produto {
     @Enumerated(EnumType.STRING)
     private CategoriaProdutos categoriaProdutos;
     @Transient
-    private Integer quantidadeEstoque;
+    private Integer estoqueInicial;
     private Boolean ativo;
     @OneToOne(mappedBy = "produto")
     private Estoque estoque;
@@ -36,14 +36,14 @@ public class Produto {
         this.descricao = descricao;
         this.preco = preco;
         this.categoriaProdutos = categoriaProdutos;
-        this.quantidadeEstoque = quantidadeEstoque;
+        this.estoqueInicial = quantidadeEstoque;
         this.ativo = true;
         this.estoque = new Estoque(this);
     }
 
     @Override
     public String toString() {
-        return "Produto " + id + " - " + nome + " - " + descricao + " - " + preco + " - " + categoriaProdutos;
+        return "(ID: " + id + " ) " + nome + " - " + descricao + " - " + preco + " - " + categoriaProdutos;
     }
 
     public Long getId() {
@@ -70,7 +70,7 @@ public class Produto {
         return ativo;
     }
 
-    public Integer getQuantidadeEstoque() {
+    public Integer getEstoqueInicial() {
         return estoque.getQuantidade();
     }
 }
